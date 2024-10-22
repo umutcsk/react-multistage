@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
-            steps {
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'docker build -t hello-world-server .'
@@ -22,7 +17,7 @@ pipeline {
 
     post {
         always {
-            cleanWs()
+            cleanWs() 
         }
     }
 }
