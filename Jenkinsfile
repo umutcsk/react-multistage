@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone') {
+            steps {
+                // Git deposundan kod çekme işlemi
+                git branch: 'main', url: 'https://github.com/umutcsk/react-multistage.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'docker build -t hello-world-server .'
@@ -17,7 +24,7 @@ pipeline {
 
     post {
         always {
-            cleanWs() 
+            cleanWs()
         }
     }
 }
